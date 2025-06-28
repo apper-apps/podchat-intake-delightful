@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { toast } from 'react-toastify'
-import ChatContainer from '@/components/organisms/ChatContainer'
-import MessageInput from '@/components/molecules/MessageInput'
-import ProgressBar from '@/components/molecules/ProgressBar'
-import ExportModal from '@/components/organisms/ExportModal'
-import Button from '@/components/atoms/Button'
-import Loading from '@/components/ui/Loading'
-import Error from '@/components/ui/Error'
-import Empty from '@/components/ui/Empty'
-import ApperIcon from '@/components/ApperIcon'
-import questionService from '@/services/api/questionService'
-import useLocalStorage from '@/hooks/useLocalStorage'
+import React, { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { toast } from "react-toastify";
+import ApperIcon from "@/components/ApperIcon";
+import ChatContainer from "@/components/organisms/ChatContainer";
+import ExportModal from "@/components/organisms/ExportModal";
+import Button from "@/components/atoms/Button";
+import MessageInput from "@/components/molecules/MessageInput";
+import ProgressBar from "@/components/molecules/ProgressBar";
+import Error from "@/components/ui/Error";
+import Empty from "@/components/ui/Empty";
+import Loading from "@/components/ui/Loading";
+import useLocalStorage from "@/hooks/useLocalStorage";
+import questionService from "@/services/api/questionService";
 
 const ChatIntakePage = () => {
   // State management
@@ -65,7 +65,7 @@ const ChatIntakePage = () => {
 const welcomeMessage = {
       id: Date.now(),
       type: 'host',
-      content: 'Welcome to Innovabuzz Intake! I\'m here to learn more about you as a potential podcast guest. This will be a friendly conversation - just answer each question as we go.',
+      content: 'Welcome to Innovabuzz Intake! I\'m here to learn more about you as a potential podcast guest. This will be a friendly conversation - just answer each question as we go. Let\'s start with the basics - what\'s your name?',
       timestamp: new Date()
     }
     setMessages([welcomeMessage])
@@ -180,9 +180,8 @@ const completeIntake = () => {
     const question = getCurrentQuestion()
     return question && (question.type === 'textarea' || question.field === 'bio' || question.field === 'topics' || question.field === 'availability')
   }
-
-  if (loading) {
-    return <Loading message="Preparing your interview..." />
+if (loading) {
+    return <Loading message="Preparing your conversation..." />
   }
 
   if (error) {
@@ -193,7 +192,7 @@ const completeIntake = () => {
     return (
       <Empty
         title="No Questions Available"
-        message="We couldn't load the interview questions. Please try refreshing the page."
+        message="We couldn't load the conversation questions. Please try refreshing the page."
         actionText="Refresh"
         onAction={() => window.location.reload()}
         icon="MessageCircle"
@@ -291,9 +290,8 @@ const completeIntake = () => {
               <div className="space-y-4">
                 <h2 className="text-4xl font-bold text-gray-900 font-display">
                   Ready to share your story?
-                </h2>
-                <p className="text-xl text-gray-600 leading-relaxed">
-                  Let's have a friendly conversation about your background, expertise, and what you'd love to discuss on the podcast. This will help me prepare the perfect questions for our interview.
+<p className="text-xl text-gray-600 leading-relaxed">
+                  Let's have a friendly conversation about your background, expertise, and what you'd love to discuss on the podcast. This will help me prepare the perfect questions for our conversation.
                 </p>
               </div>
 
@@ -303,9 +301,9 @@ const completeIntake = () => {
                     <ApperIcon name="Clock" className="w-4 h-4 text-primary-600" />
                     <span>5-7 minutes</span>
                   </div>
-                  <div className="flex items-center space-x-2">
+<div className="flex items-center space-x-2">
                     <ApperIcon name="MessageSquare" className="w-4 h-4 text-primary-600" />
-                    <span>7 questions</span>
+                    <span>6 questions</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <ApperIcon name="Download" className="w-4 h-4 text-primary-600" />

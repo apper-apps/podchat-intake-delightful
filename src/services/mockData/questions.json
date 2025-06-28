@@ -1,17 +1,6 @@
 [
   {
     "Id": 1,
-    "text": "Hi there! I'm excited to learn more about you for our podcast. Let's start with the basics - what's your name?",
-    "type": "text",
-    "field": "name",
-    "validation": {
-      "required": true,
-      "minLength": 2
-    },
-    "order": 1
-  },
-  {
-    "Id": 2,
     "text": "Great to meet you! What's the best email address to reach you at?",
     "type": "email",
     "field": "email",
@@ -19,10 +8,10 @@
       "required": true,
       "pattern": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$"
     },
-    "order": 2
+    "order": 1
   },
-{
-    "Id": 3,
+  {
+    "Id": 2,
     "text": "Perfect! Why do you want to be on the Innovabuzz Podcast? What draws you to share your story with our audience?",
     "type": "textarea",
     "field": "motivation",
@@ -31,10 +20,10 @@
       "minLength": 20,
       "maxLength": 500
     },
-    "order": 3
+    "order": 2
   },
-{
-    "Id": 4,
+  {
+    "Id": 3,
     "text": "Great! How many episodes of the Innovabuzz Podcast have you already listened to?",
     "type": "text",
     "field": "episodesListened",
@@ -42,10 +31,10 @@
       "required": true,
       "minLength": 1
     },
-    "order": 4
+    "order": 3
   },
   {
-    "Id": 5,
+    "Id": 4,
     "text": "Excellent! What specific topics would you be most excited to discuss on the podcast? This helps me prepare great questions for our conversation.",
     "type": "textarea",
     "field": "topics",
@@ -53,20 +42,20 @@
       "required": true,
       "minLength": 20
     },
-    "order": 5
+    "order": 4
   },
   {
-    "Id": 6,
+    "Id": 5,
     "text": "Awesome! Do you have any social media profiles or websites you'd like to share? (LinkedIn, Twitter, personal website, etc.)",
     "type": "text",
     "field": "socialLinks",
     "validation": {
       "required": false
     },
-    "order": 6
+    "order": 5
   },
   {
-    "Id": 7,
+    "Id": 6,
     "text": "Almost done! What's your availability like? Any preferred days/times, or any periods when you're not available?",
     "type": "textarea",
     "field": "availability",
@@ -74,6 +63,6 @@
       "required": true,
       "minLength": 10
     },
-    "order": 7
+    "order": 6
   }
 ]
