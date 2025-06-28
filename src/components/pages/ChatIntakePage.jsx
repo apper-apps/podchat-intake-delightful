@@ -62,13 +62,12 @@ const ChatIntakePage = () => {
   const startConversation = async () => {
     if (questions.length === 0) return
     
-    const welcomeMessage = {
+const welcomeMessage = {
       id: Date.now(),
       type: 'host',
-      content: 'Welcome to PodChat Intake! I\'m here to learn more about you as a potential podcast guest. This will be a friendly conversation - just answer each question as we go.',
+      content: 'Welcome to Innovabuzz Intake! I\'m here to learn more about you as a potential podcast guest. This will be a friendly conversation - just answer each question as we go.',
       timestamp: new Date()
     }
-    
     setMessages([welcomeMessage])
     
     // Show typing indicator then first question
@@ -147,11 +146,11 @@ const ChatIntakePage = () => {
     }, 1000)
   }
 
-  const completeIntake = () => {
+const completeIntake = () => {
     const completionMessage = {
       id: Date.now(),
       type: 'host',
-      content: `Perfect! Thank you ${guestInfo.name || 'there'} for taking the time to share your information. I have everything I need to prepare for our podcast conversation. You can export your responses using the button below, and I'll be in touch soon!`,
+      content: `Perfect! Thank you ${guestInfo.name || 'there'} for taking the time to share your information. I have everything I need to prepare for our Innovabuzz Podcast conversation. You can export your responses using the button below, and I'll be in touch soon!`,
       timestamp: new Date()
     }
 
@@ -217,12 +216,12 @@ const ChatIntakePage = () => {
               <div className="w-10 h-10 bg-gradient-to-r from-primary-600 to-accent-500 rounded-full flex items-center justify-center">
                 <ApperIcon name="Mic" className="w-6 h-6 text-white" />
               </div>
-              <div>
+<div>
                 <h1 className="text-xl font-bold text-gray-900 font-display">
-                  PodChat Intake
+                  Innovabuzz Intake
                 </h1>
                 <p className="text-sm text-gray-600">
-                  Conversational guest onboarding
+                  Innovabuzz Podcast guest onboarding
                 </p>
               </div>
             </div>

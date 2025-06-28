@@ -21,26 +21,26 @@
     },
     "order": 2
   },
-  {
+{
     "Id": 3,
-    "text": "Perfect! Now, tell me a bit about yourself. What's your background and what do you do? (Think of this as your elevator pitch!)",
+    "text": "Perfect! Why do you want to be on the Innovabuzz Podcast? What draws you to share your story with our audience?",
     "type": "textarea",
-    "field": "bio",
+    "field": "motivation",
     "validation": {
       "required": true,
-      "minLength": 50,
+      "minLength": 20,
       "maxLength": 500
     },
     "order": 3
   },
-  {
+{
     "Id": 4,
-    "text": "That sounds fascinating! What are your main areas of expertise? Feel free to list multiple areas separated by commas.",
+    "text": "Great! How many episodes of the Innovabuzz Podcast have you already listened to?",
     "type": "text",
-    "field": "expertise",
+    "field": "episodesListened",
     "validation": {
       "required": true,
-      "minLength": 10
+      "minLength": 1
     },
     "order": 4
   },
