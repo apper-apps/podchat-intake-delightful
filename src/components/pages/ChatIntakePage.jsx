@@ -15,11 +15,12 @@ import questionService from "@/services/api/questionService";
 
 const ChatIntakePage = () => {
   // State management
-  const [messages, setMessages] = useLocalStorage('podChatMessages', [])
+const [messages, setMessages] = useLocalStorage('podChatMessages', [])
   const [guestInfo, setGuestInfo] = useLocalStorage('podChatGuestInfo', {})
   const [currentQuestionIndex, setCurrentQuestionIndex] = useLocalStorage('podChatProgress', 0)
   const [currentInput, setCurrentInput] = useState('')
   const [inputError, setInputError] = useState('')
+  const [waitingForNext, setWaitingForNext] = useState(false)
   
   // UI State
   const [isTyping, setIsTyping] = useState(false)
@@ -97,7 +98,7 @@ const welcomeMessage = {
     setMessages(prev => [...prev, questionMessage])
   }
 
-  const handleSendMessage = async (message) => {
+const handleSendMessage = async (message) => {
     if (currentQuestionIndex >= questions.length) return
 
     const currentQuestion = questions[currentQuestionIndex]
@@ -128,20 +129,31 @@ const welcomeMessage = {
       [currentQuestion.field]: message
     }))
 
-    // Move to next question
+    // Move to next question index
     const nextIndex = currentQuestionIndex + 1
     setCurrentQuestionIndex(nextIndex)
 
-    // Show typing indicator then next question or completion
+    // Check if we're done or wait for user to continue
+    if (nextIndex >= questions.length) {
+      // Complete the intake immediately if no more questions
+      setTimeout(() => {
+        completeIntake()
+      }, 1000)
+    } else {
+      // Wait for user to click continue
+      setWaitingForNext(true)
+    }
+  }
+
+  const handleContinue = () => {
+    setWaitingForNext(false)
+    
+    // Show typing indicator then next question
     setTimeout(() => {
       setIsTyping(true)
       setTimeout(() => {
         setIsTyping(false)
-        if (nextIndex < questions.length) {
-          askNextQuestion()
-        } else {
-          completeIntake()
-        }
+        askNextQuestion()
       }, 1500)
     }, 1000)
   }
@@ -158,13 +170,14 @@ const completeIntake = () => {
     toast.success('Intake completed! 🎉')
   }
 
-  const resetConversation = () => {
+const resetConversation = () => {
     if (window.confirm('Are you sure you want to start over? All progress will be lost.')) {
       setMessages([])
       setGuestInfo({})
       setCurrentQuestionIndex(0)
       setCurrentInput('')
       setInputError('')
+      setWaitingForNext(false)
       setIsComplete(false)
       setHasStarted(false)
       toast.info('Conversation reset')
@@ -327,10 +340,31 @@ if (loading) {
         ) : (
           /* Chat Interface */
           <>
-            <ChatContainer messages={messages} isTyping={isTyping} />
+<ChatContainer messages={messages} isTyping={isTyping} />
+            
+            {/* Continue Button Area */}
+            {waitingForNext && !isComplete && (
+              <motion.div
+                className="border-t bg-white px-4 py-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="flex justify-center">
+                  <Button
+                    variant="primary"
+                    icon="ArrowRight"
+                    onClick={handleContinue}
+                    size="lg"
+                  >
+                    Continue to Next Question
+                  </Button>
+                </div>
+              </motion.div>
+            )}
             
             {/* Input Area */}
-            {!isComplete && (
+            {!isComplete && !waitingForNext && (
               <motion.div
                 className="border-t bg-white px-4 py-4"
                 initial={{ opacity: 0, y: 20 }}
