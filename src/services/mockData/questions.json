@@ -1,0 +1,79 @@
+[
+  {
+    "Id": 1,
+    "text": "Hi there! I'm excited to learn more about you for our podcast. Let's start with the basics - what's your name?",
+    "type": "text",
+    "field": "name",
+    "validation": {
+      "required": true,
+      "minLength": 2
+    },
+    "order": 1
+  },
+  {
+    "Id": 2,
+    "text": "Great to meet you! What's the best email address to reach you at?",
+    "type": "email",
+    "field": "email",
+    "validation": {
+      "required": true,
+      "pattern": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$"
+    },
+    "order": 2
+  },
+  {
+    "Id": 3,
+    "text": "Perfect! Now, tell me a bit about yourself. What's your background and what do you do? (Think of this as your elevator pitch!)",
+    "type": "textarea",
+    "field": "bio",
+    "validation": {
+      "required": true,
+      "minLength": 50,
+      "maxLength": 500
+    },
+    "order": 3
+  },
+  {
+    "Id": 4,
+    "text": "That sounds fascinating! What are your main areas of expertise? Feel free to list multiple areas separated by commas.",
+    "type": "text",
+    "field": "expertise",
+    "validation": {
+      "required": true,
+      "minLength": 10
+    },
+    "order": 4
+  },
+  {
+    "Id": 5,
+    "text": "Excellent! What specific topics would you be most excited to discuss on the podcast? This helps me prepare great questions for our conversation.",
+    "type": "textarea",
+    "field": "topics",
+    "validation": {
+      "required": true,
+      "minLength": 20
+    },
+    "order": 5
+  },
+  {
+    "Id": 6,
+    "text": "Awesome! Do you have any social media profiles or websites you'd like to share? (LinkedIn, Twitter, personal website, etc.)",
+    "type": "text",
+    "field": "socialLinks",
+    "validation": {
+      "required": false
+    },
+    "order": 6
+  },
+  {
+    "Id": 7,
+    "text": "Almost done! What's your availability like? Any preferred days/times, or any periods when you're not available?",
+    "type": "textarea",
+    "field": "availability",
+    "validation": {
+      "required": true,
+      "minLength": 10
+    },
+    "order": 7
+  }
+]
