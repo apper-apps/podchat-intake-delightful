@@ -287,10 +287,11 @@ if (loading) {
                 <ApperIcon name="MessageCircle" className="w-12 h-12 text-white" />
               </motion.div>
 
-              <div className="space-y-4">
+<div className="space-y-4">
                 <h2 className="text-4xl font-bold text-gray-900 font-display">
                   Ready to share your story?
-<p className="text-xl text-gray-600 leading-relaxed">
+                </h2>
+                <p className="text-xl text-gray-600 leading-relaxed">
                   Let's have a friendly conversation about your background, expertise, and what you'd love to discuss on the podcast. This will help me prepare the perfect questions for our conversation.
                 </p>
               </div>
